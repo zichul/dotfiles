@@ -39,6 +39,9 @@ Plug 'posva/vim-vue'
 Plug 'elixir-editors/vim-elixir'
 Plug 'mhinz/vim-mix-format'
 Plug 'slashmili/alchemist.vim'
+" Snippets
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 " Others
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
@@ -143,6 +146,21 @@ silent! map <F3> :NERDTreeFind<CR>
 
 let g:NERDSpaceDelims = 1
 
+"""""""""""""""""""""""""""""
+"
+" Ultisnips
+"
+""""""""""""""""""""""""""
+
+" Trigger configuration. Do not use <tab> if you use
+" https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
 """"""""""""""""""""""""""
 "
 " Rails
@@ -177,6 +195,7 @@ map <c-h> <c-w>h
 "
 """"""""""""""""""""""""""
 
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 nmap ; :FZF<CR>
 
 """"""""""""""""""""""""""
@@ -285,3 +304,21 @@ if executable('ripper-tags')
       \ 'ctagsargs'  : ['-f', '-']
       \ }
 endif
+
+let g:tagbar_type_elixir = {
+    \ 'ctagstype' : 'elixir',
+    \ 'kinds' : [
+        \ 'f:functions',
+        \ 'functions:functions',
+        \ 'c:callbacks',
+        \ 'd:delegates',
+        \ 'e:exceptions',
+        \ 'i:implementations',
+        \ 'a:macros',
+        \ 'o:operators',
+        \ 'm:modules',
+        \ 'p:protocols',
+        \ 'r:records',
+        \ 't:tests'
+    \ ]
+\ }
