@@ -35,14 +35,16 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'posva/vim-vue'
+Plug 'ElmCast/elm-vim'
 " Elixir
 Plug 'elixir-editors/vim-elixir'
 Plug 'mhinz/vim-mix-format'
 Plug 'slashmili/alchemist.vim'
 " Snippets
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
 " Others
+Plug 'hashivim/vim-terraform'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'kopischke/vim-fetch'
@@ -52,6 +54,10 @@ Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'majutsushi/tagbar'
+Plug 'cespare/vim-toml'
+Plug 'tarekbecker/vim-yaml-formatter'
+Plug 'martinda/Jenkinsfile-vim-syntax'
+
 
 call plug#end()
 
@@ -146,21 +152,6 @@ silent! map <F3> :NERDTreeFind<CR>
 
 let g:NERDSpaceDelims = 1
 
-"""""""""""""""""""""""""""""
-"
-" Ultisnips
-"
-""""""""""""""""""""""""""
-
-" Trigger configuration. Do not use <tab> if you use
-" https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
-
 """"""""""""""""""""""""""
 "
 " Rails
@@ -205,6 +196,15 @@ nmap ; :FZF<CR>
 """"""""""""""""""""""""""
 
 nnoremap <F5> :GundoToggle<CR>
+
+""""""""""""""""""""""""""
+"
+" Terraform
+"
+""""""""""""""""""""""""""
+
+let g:terraform_fmt_on_save=1
+
 
 """"""""""""""""""""""""""
 "
@@ -322,3 +322,18 @@ let g:tagbar_type_elixir = {
         \ 't:tests'
     \ ]
 \ }
+
+"""""""""""""""""""""""""""""
+"
+" Ultisnips
+"
+""""""""""""""""""""""""""
+
+" Trigger configuration. Do not use <tab> if you use
+" https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
