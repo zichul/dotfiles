@@ -30,6 +30,7 @@ Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'tpope/vim-haml', { 'for': 'haml' }
 Plug 'tpope/vim-rails', { 'for': 'ruby' }
 Plug 'tpope/vim-ragtag'
+" Plug 'ruby-formatter/rufo-vim'
 " JS
 Plug 'kchmck/vim-coffee-script'
 Plug 'pangloss/vim-javascript'
@@ -49,14 +50,16 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'kopischke/vim-fetch'
 Plug 'elzr/vim-json'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
+" Plug 'prabirshrestha/asyncomplete.vim'
+" Plug 'prabirshrestha/async.vim'
+" Plug 'prabirshrestha/vim-lsp'
+" Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'majutsushi/tagbar'
 Plug 'cespare/vim-toml'
 Plug 'tarekbecker/vim-yaml-formatter'
 Plug 'martinda/Jenkinsfile-vim-syntax'
+Plug 'Chiel92/vim-autoformat'
+
 
 
 call plug#end()
@@ -164,6 +167,14 @@ autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
 " highlight Pmenu ctermbg=238 gui=bold " improve autocomplete menu color
+"
+""""""""""""""""""""""""""
+"
+" Rufo
+"
+""""""""""""""""""""""""""
+
+" let g:rufo_auto_formatting = 1
 
 """"""""""""""""""""""""""
 "
@@ -204,7 +215,15 @@ nnoremap <F5> :GundoToggle<CR>
 """"""""""""""""""""""""""
 
 let g:terraform_fmt_on_save=1
+autocmd BufRead,BufNewFile *.hcl set filetype=terraform
 
+""""""""""""""""""""""""""
+"
+" Autoformat
+"
+""""""""""""""""""""""""""
+
+au BufWrite *.py,*.go :Autoformat
 
 """"""""""""""""""""""""""
 "
@@ -266,20 +285,20 @@ let g:mix_format_on_save = 1
 "
 """"""""""""""""""""""""""""""
 
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
-imap <c-space> <Plug>(asyncomplete_force_refresh)
+" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+" imap <c-space> <Plug>(asyncomplete_force_refresh)
 
-if executable('solargraph')
-    " gem install solargraph
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'solargraph',
-        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
-        \ 'initialization_options': {"diagnostics": "true"},
-        \ 'whitelist': ['ruby'],
-        \ })
-endif
+" if executable('solargraph')
+    " " gem install solargraph
+    " au User lsp_setup call lsp#register_server({
+        " \ 'name': 'solargraph',
+        " \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
+        " \ 'initialization_options': {"diagnostics": "true"},
+        " \ 'whitelist': ['ruby'],
+        " \ })
+" endif
 
 """"""""""""""""""""""""""""""
 "
